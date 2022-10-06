@@ -22,7 +22,7 @@ export default class PreviewView extends View {
           <p class="preview__publisher">${data.publisher}</p>
           <div class="preview__user-generated ${data.key ? '' : 'hidden'}">
             <svg>
-              <use href="${icons}.svg#icon-user"></use>
+              <use href="${icons}#icon-user"></use>
             </svg>
           </div>
         </div>
