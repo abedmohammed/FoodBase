@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./prod",
+    "build_qa": "parcel build index.html --dist-dir ./qa"
   },
   "author": "Mohammed Abed",
   "license": "ISC",
