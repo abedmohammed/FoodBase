@@ -1,6 +1,5 @@
 node_modules/
 dist/
 prod/
-qa/
 .parcel-cache/
 .DS_Store
