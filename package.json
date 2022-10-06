@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./prod"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Mohammed Abed",
   "license": "ISC",
