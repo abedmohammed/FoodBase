@@ -5,10 +5,14 @@ class AddRecipeView extends View {
   _parentElement = document.querySelector('.upload');
   _message = 'Recipe was successfully uploaded!';
 
+  _body = document.body;
   _window = document.querySelector('.add-recipe-window');
   _overlay = document.querySelector('.overlay');
   _btnOpen = document.querySelector('.nav__btn--add-recipe');
   _btnClose = document.querySelector('.btn--close-modal');
+  _btnAdd;
+
+  _numIngs = 1;
 
   constructor() {
     super();
@@ -20,11 +24,16 @@ class AddRecipeView extends View {
     this._renderForm();
     this._overlay.classList.remove('hidden');
     this._window.classList.remove('hidden');
+    this._body.classList.add('no-scroll');
+
+    this._numIngs = 1;
+    this._addHandlerAddIngredient();
   }
 
   closeWindow() {
     this._overlay.classList.add('hidden');
     this._window.classList.add('hidden');
+    this._body.classList.remove('no-scroll');
   }
 
   _addHandlerShowWindow() {
@@ -34,6 +43,14 @@ class AddRecipeView extends View {
   _addHandlerCloseWindow() {
     this._btnClose.addEventListener('click', this.closeWindow.bind(this));
     this._overlay.addEventListener('click', this.closeWindow.bind(this));
+  }
+
+  _addHandlerAddIngredient() {
+    this._btnAdd = document.querySelector('.upload__add--ingredient');
+    this._btnAdd.addEventListener(
+      'click',
+      this._generateMarkupIngInput.bind(this)
+    );
   }
 
   addHandlerUpload(handler) {
@@ -49,64 +66,41 @@ class AddRecipeView extends View {
     const markup = `
       <div class="upload__column">
         <h3 class="upload__heading">Recipe data</h3>
-        <label>Title</label>
-        <input value="" required name="title" type="text" />
-        <label>URL</label>
-        <input value="" required name="sourceUrl" type="text" />
-        <label>Image URL</label>
-        <input value="" required name="image" type="text" />
-        <label>Publisher</label>
-        <input value="" required name="publisher" type="text" />
-        <label>Prep time</label>
-        <input value="" required name="cookingTime" type="number" />
-        <label>Servings</label>
-        <input value="" required name="servings" type="number" />
+        <div class="upload__column__data">
+          <label>Title</label>
+          <input value="" required name="title" type="text" />
+          <label>URL</label>
+          <input value="" required name="sourceUrl" type="text" />
+          <label>Image URL</label>
+          <input value="" required name="image" type="text" />
+          <label>Publisher</label>
+          <input value="" required name="publisher" type="text" />
+          <label>Prep time</label>
+          <input value="" required name="cookingTime" type="number" />
+          <label>Servings</label>
+          <input value="" required name="servings" type="number" />
+        </div>
       </div>
 
-      <div class="upload__column">
+      <div class="upload__ingredients">
         <h3 class="upload__heading">Ingredients</h3>
-        <label>Ingredient 1</label>
-        <input
+        <div class="upload__ingredients__list">
+          <label>Ingredient 1</label>
+          <input
           value=""
           type="text"
           required
           name="ingredient-1"
           placeholder="Format: 'Quantity,Unit,Description'"
-        />
-        <label>Ingredient 2</label>
-        <input
-          value=""
-          type="text"
-          name="ingredient-2"
-          placeholder="Format: 'Quantity,Unit,Description'"
-        />
-        <label>Ingredient 3</label>
-        <input
-          value=""
-          type="text"
-          name="ingredient-3"
-          placeholder="Format: 'Quantity,Unit,Description'"
-        />
-        <label>Ingredient 4</label>
-        <input
-          type="text"
-          name="ingredient-4"
-          placeholder="Format: 'Quantity,Unit,Description'"
-        />
-        <label>Ingredient 5</label>
-        <input
-          type="text"
-          name="ingredient-5"
-          placeholder="Format: 'Quantity,Unit,Description'"
-        />
-        <label>Ingredient 6</label>
-        <input
-          type="text"
-          name="ingredient-6"
-          placeholder="Format: 'Quantity,Unit,Description'"
-        />
+          />
+        <button type="button" class="btn--round upload__add--ingredient">
+          <svg>
+            <use href="${icons}#icon-plus-circle"></use>
+          </svg>
+        </button>
+        </div>
       </div>
-
+      
       <button class="btn upload__btn">
         <svg>
           <use href="${icons}#icon-upload-cloud"></use>
@@ -117,6 +111,22 @@ class AddRecipeView extends View {
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  _generateMarkupIngInput() {
+    this._numIngs += 1;
+    const markup = `
+      <label>Ingredient ${this._numIngs}</label>
+      <input
+      value=""
+      type="text"
+      required
+      name="ingredient-${this._numIngs}"
+      placeholder="Format: 'Quantity,Unit,Description'"
+      />
+      `;
+
+    this._btnAdd.insertAdjacentHTML('beforebegin', markup);
   }
 }
 

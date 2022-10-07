@@ -46,12 +46,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem 6rem;
+  align-items: start;
 
   &__column {
-    display: grid;
-    grid-template-columns: 1fr 2.8fr;
-    align-items: center;
-    gap: 1.5rem;
+    &__data {
+      display: grid;
+      grid-template-columns: 1fr 2.8fr;
+      align-items: center;
+      gap: 1.5rem;
+    }
 
     & label {
       font-size: 1.5rem;
@@ -95,5 +98,65 @@
   &__btn {
     grid-column: 1 / -1;
     justify-self: center;
+  }
+
+  &__ingredients {
+    gap: 1.5rem;
+
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr 2.8fr;
+      align-items: center;
+      align-content: start;
+      all: inherit;
+      padding-right: 2rem;
+      height: 30rem;
+      overflow-y: scroll;
+    }
+
+    &__list::-webkit-scrollbar {
+      cursor: pointer;
+      width: 12px;
+    }
+
+    &__list::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: $color-grey-light-2;
+    }
+
+    &__list::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-image: $gradient;
+    }
+
+    & label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: inherit;
+    }
+
+    & input {
+      font-size: 1.5rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+
+      &::placeholder {
+        color: $color-grey-light-3;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid $color-primary;
+        background-color: $color-grey-light-1;
+      }
+    }
+
+    & button {
+      justify-self: start;
+      margin-top: 1rem;
+      margin-left: 1rem;
+    }
   }
 }
