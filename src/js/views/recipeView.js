@@ -7,10 +7,18 @@ class RecipeView extends View {
   _errorMessage = 'We could not find that recipe. Please try another one!';
   _message = '';
 
+  /**
+   * Applies event listener to hash changes or the page loads
+   * @param {CallableFunction} handler to display corresponding recipe
+   */
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
+  /**
+   * Applies handler to recipe servings button
+   * @param {CallableFunction} handler to update serving information
+   */
   addHandlerUpdateServings(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const button = e.target.closest('.btn--update-servings');
@@ -22,6 +30,10 @@ class RecipeView extends View {
     });
   }
 
+  /**
+   * Applies handler to bookmark button
+   * @param {CallableFunction} handler to update bookmarked recipes
+   */
   addHandlerBookmark(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const button = e.target.closest('.btn--bookmark');
@@ -32,6 +44,7 @@ class RecipeView extends View {
     });
   }
 
+  // Generates recipe markup
   _generateMarkup() {
     return `
     <figure class="recipe__fig">
@@ -124,6 +137,7 @@ class RecipeView extends View {
     </div>`;
   }
 
+  // Generate individual ingredient markup
   _generateMarkupIngredient(ing) {
     return `
       <li class="recipe__ingredient">

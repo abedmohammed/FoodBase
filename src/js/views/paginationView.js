@@ -4,6 +4,10 @@ import icons from 'url:../../img/icons.svg';
 class PaginationView extends View {
   _parentElement = document.querySelector('.pagination');
 
+  /**
+   * Add handler to clicking on pagination buttons
+   * @param {CallableFunction} handler to change the corresponding search results to the page
+   */
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', function (e) {
       const button = e.target.closest('.btn--inline');
@@ -16,6 +20,7 @@ class PaginationView extends View {
     });
   }
 
+  // Generate markup for pagination buttons
   _generateMarkup() {
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage

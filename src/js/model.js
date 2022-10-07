@@ -12,6 +12,7 @@ export const state = {
   bookmarks: [],
 };
 
+// Creates object that destructures recipe information from object into more understandable form
 const createRecipeObject = function (data) {
   const { recipe } = data.data;
   return {
@@ -27,6 +28,7 @@ const createRecipeObject = function (data) {
   };
 };
 
+// Loads specified recipe based on passed id of the recipe
 export const loadRecipe = async function (id) {
   try {
     const data = await getJSON(`${API_URL}${id}?key=${KEY}`);
@@ -42,6 +44,7 @@ export const loadRecipe = async function (id) {
   }
 };
 
+// Loads all search results for specified search query
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
@@ -64,6 +67,7 @@ export const loadSearchResults = async function (query) {
   }
 };
 
+// Calculates and returns the results of the shown sidebar page
 export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
 
@@ -73,6 +77,7 @@ export const getSearchResultsPage = function (page = state.search.page) {
   return state.search.results.slice(start, end);
 };
 
+// Updates servings information
 export const updateServings = function (newServings) {
   state.recipe.ingredients.forEach(ing => {
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
@@ -81,10 +86,12 @@ export const updateServings = function (newServings) {
   state.recipe.servings = newServings;
 };
 
+// Saves bookmarks in local storage
 const persistBookmarks = function () {
   localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
 };
 
+// Adds a recipe to bookmarks variable in the state object
 export const addBookmark = function (recipe) {
   state.bookmarks.push(recipe);
 
@@ -93,6 +100,7 @@ export const addBookmark = function (recipe) {
   persistBookmarks();
 };
 
+// Deletes a recipe from bookmarks variable in the state object
 export const deleteBookmark = function (id) {
   const index = state.bookmarks.findIndex(el => el.id === id);
   state.bookmarks.splice(index, 1);
@@ -102,10 +110,12 @@ export const deleteBookmark = function (id) {
   persistBookmarks();
 };
 
+// Clears all recipes from bookmarks variable in the state object
 const clearBookmarks = function () {
   localStorage.clear('clearBookmarks');
 };
 
+// Initializes and loads bookmarks information from local storage into state
 const init = function () {
   const storage = localStorage.getItem('bookmarks');
   if (storage) state.bookmarks = JSON.parse(storage);
@@ -113,6 +123,7 @@ const init = function () {
 
 init();
 
+// Extracts recipe information and uploads recipe to database, adds recipe to bookmarks
 export const uploadRecipe = async function (newRecipe) {
   try {
     const ingredients = Object.entries(newRecipe)
