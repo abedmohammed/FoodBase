@@ -6,6 +6,10 @@ class BookmarksView extends PreviewView {
   _errorMessage = 'No bookmarks yet. Find a nice recipe and bookmark it :)';
   _message = '';
 
+  /**
+   * Attach event handler to show bookmakrs window
+   * @param {CallableFunction} handler to show bookmarks info
+   */
   addHandlerRender(handler) {
     window.addEventListener('load', handler);
   }

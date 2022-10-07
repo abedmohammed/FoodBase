@@ -20,6 +20,9 @@ class AddRecipeView extends View {
     this._addHandlerCloseWindow();
   }
 
+  /**
+   * Open recipe add modal window
+   */
   openWindow() {
     this._renderForm();
     this._overlay.classList.remove('hidden');
@@ -30,21 +33,27 @@ class AddRecipeView extends View {
     this._addHandlerAddIngredient();
   }
 
+  /**
+   * Close recipe add modal window
+   */
   closeWindow() {
     this._overlay.classList.add('hidden');
     this._window.classList.add('hidden');
     this._body.classList.remove('no-scroll');
   }
 
+  // Attach event handlers to add recipe menu button
   _addHandlerShowWindow() {
     this._btnOpen.addEventListener('click', this.openWindow.bind(this));
   }
 
+  // Attach event handlers for all ways to close modal window
   _addHandlerCloseWindow() {
     this._btnClose.addEventListener('click', this.closeWindow.bind(this));
     this._overlay.addEventListener('click', this.closeWindow.bind(this));
   }
 
+  // Attach event handler to add another ingredient
   _addHandlerAddIngredient() {
     this._btnAdd = document.querySelector('.upload__add--ingredient');
     this._btnAdd.addEventListener(
@@ -53,6 +62,10 @@ class AddRecipeView extends View {
     );
   }
 
+  /**
+   * Attach event handler to upload recipe button
+   * @param {CallableFunction} handler to submit added recipe information
+   */
   addHandlerUpload(handler) {
     this._parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -62,6 +75,7 @@ class AddRecipeView extends View {
     });
   }
 
+  // Render markup for modal window ingredients and recipe details
   _renderForm() {
     const markup = `
       <div class="upload__column">
@@ -113,6 +127,7 @@ class AddRecipeView extends View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
+  // Render markup for adding individual ingredients
   _generateMarkupIngInput() {
     this._numIngs += 1;
     const markup = `

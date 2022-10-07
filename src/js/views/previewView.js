@@ -2,10 +2,15 @@ import View from './View';
 import icons from 'url:../../img/icons.svg';
 
 export default class PreviewView extends View {
+  /**
+   * Combines individual markup recipe previews to display
+   * @returns markup for all recipe previews in view
+   */
   _generateMarkup() {
     return this._data.map(this._generateMarkupPreview).join('');
   }
 
+  // Generate individual recipe preview markup for one recipe
   _generateMarkupPreview(data) {
     const id = window.location.hash.slice(1);
 
