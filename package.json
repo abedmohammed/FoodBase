@@ -1,6 +1,6 @@
 {
   "name": "forkify",
-  "version": "1.0.3",
+  "version": "1.1.2",
   "description": "Recipe application",
   "default": "index.html",
   "targets": {

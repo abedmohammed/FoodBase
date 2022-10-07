@@ -19,7 +19,9 @@
   <body>
     <div class="container">
       <header class="header">
-        <img src="src/img/logo.png" alt="Logo" class="header__logo" />
+        <a href=""
+          ><img src="src/img/logo.png" alt="Logo" class="header__logo"
+        /></a>
         <form class="search">
           <input
             type="text"
@@ -121,16 +123,46 @@
           </button> -->
         </div>
 
-        <p class="copyright">
-          &copy; Copyright by
+        <div class="footer-links">
           <a
-            class="twitter-link"
+            class="btn--tiny link-linkedin"
             target="_blank"
-            href="https://twitter.com/jonasschmedtman"
-            >Jonas Schmedtmann</a
-          >. Use for learning or your portfolio. Don't use to teach. Don't claim
-          as your own.
-        </p>
+            href="https://www.linkedin.com/in/abed-mohammed/"
+          >
+            <svg>
+              <use href="src/img/icons.svg#icon-linkedin"></use>
+            </svg>
+          </a>
+
+          <a
+            class="btn--tiny link-github"
+            target="_blank"
+            href="https://github.com/abedmohammed/Forkify"
+          >
+            <svg>
+              <use href="src/img/icons.svg#icon-github"></use>
+            </svg>
+          </a>
+
+          <a
+            class="btn--tiny link-portfolio"
+            target="_blank"
+            href="https://mohammedabed.netlify.app/"
+          >
+            <svg>
+              <use href="src/img/icons.svg#icon-portfolio"></use>
+            </svg>
+          </a>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; Copyright by
+            <a target="_blank" href="https://github.com/abedmohammed"
+              >Mohammed Abed</a
+            >
+          </p>
+        </div>
       </div>
 
       <div class="recipe">

@@ -33,10 +33,31 @@
   color: $color-grey-dark-2;
   font-size: 1.2rem;
   padding: 0 3.5rem;
-  margin-top: 4rem;
+  margin-top: 1.6rem;
+  display: flex;
 
-  .twitter-link:link,
-  .twitter-link:visited {
+  a:link,
+  a:visited {
     color: $color-grey-dark-2;
+  }
+}
+
+.footer-links {
+  padding: 0 3.5rem;
+  margin-top: 4rem;
+  display: flex;
+  gap: 1rem;
+
+  a {
+    width: 2.1rem;
+    height: 2.1rem;
+
+    svg {
+      fill: $color-grey-dark-2;
+    }
+  }
+  .link-portfolio {
+    width: 2.3rem !important;
+    height: 2.3rem !important;
   }
 }
