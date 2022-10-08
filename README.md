@@ -24,12 +24,16 @@ To run locally,
 Made in vanilla JavaScript, HTML, and SCSS using VSCode
 
 🔷 Used user stories and flowcharts for application design
+
 🔷 Used MVC (model, view, controller) architecture to separate main logic components
-🔷 npm package management
-🔷 Used Parcel to bundle project code and Babel to transpile ES6+ features to ES5 for browser compatability
+
+🔷 [npm](https://www.npmjs.com/) package management
+
+🔷 Used [Parcel](https://parceljs.org/) to bundle project code and [Babel](https://babeljs.io/) to transpile ES6+ features to ES5 for browser compatability
+
 🔷 Used [Forkify RESTful API](https://forkify-api.herokuapp.com/v2) for fetching recipes
 
 <!-- Creds -->
 ## Notes 📝 ##
 
-Made as part of JavaScript course by <a href="https://www.udemy.com/course/the-complete-javascript-course/" target="_blank">Jonas Schmedtmann JS Course</a>
+Made as part of JavaScript course by [Jonas Schmedtmann JS Course](https://www.udemy.com/course/the-complete-javascript-course/)
